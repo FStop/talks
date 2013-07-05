@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Media Queries FTW</title>
+	<style>
+		body{
+			height: 100%;
+			background: lightblue;
+		}
+		h1{
+			text-shadow: 0 1px 0 #CCC, 0 2px 0 #C9C9C9, 0 3px 0 #BBB, 0 4px 0 #B9B9B9, 0 5px 0 #AAA, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 20px 20px rgba(0, 0, 0, 0.15);
+				margin: 0 0 20px 0;
+				color: #EEE;
+				font-family: "League Gothic", Impact, sans-serif;
+				line-height: 0.9em;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+				font-size: 3.77em;
+				text-align: center;
+						}
+			.container{
+				margin: 0 auto;
+			}
+		@media all and (max-width: 800px){
+			body{
+				background: lightgreen;
+			}
+			.container{
+				width:400px;
+				height: 268px;
+      			background: url(assets/mq-img/lightning-small.jpg);
+   			 }
+		}
+
+		  @media all and (min-width: 801px){
+
+		    .container{
+		    	width:800px;
+				height: 565px;
+		      background: url(assets/mq-img/lightning-large.jpg);
+		    }
+		  }
+		h3{
+			text-align: center;
+			font-family:sans-serif;
+			margin-top:1em;
+		}
+	</style>
+
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+     $(window).resize(function() {
+      var the_width = $(window).width();
+      $('#width').text(the_width);
+      var the_height = $(window).height();
+      $('#height').text(the_height);
+     });
+    </script>
+
+
+</head>
+<body>
+	<h1>Media Queries!</h1>
+	
+	<div class="container">&bnsp;</div>
+	<h3>Width: <span id="width"></span></h3>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Version Control with Git & Tower</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Gabriel Luethje">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+    <style>
+      section p{
+        text-align: left;
+        margin-bottom: 1em;
+      }
+      ::selection {
+        color: white;
+        background: lightblue;
+        text-shadow: none;
+      }
+    </style>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+
+        <section>
+
+            <h2>Version Control Basics</h2>
+            <h3>with Git and Tower</h3>
+
+        </section>
+        <section>
+         
+            <h2>What is version control?</h2>
+            <h3>
+              
+            </h3>
+            <p><strong>Big picture:</strong> tracking changes to files in a project.</p>
+        </section>
+        <section>
+          <h2>Why do we need it?</h2>
+          <ul>
+            <li>Website files are complex.</li>
+            <li>WordPress theme files are even more complex.</li>
+            <li>Accurately track code changes, line by line.</li>
+            <li>Roll back to previous states.</li>
+            <li>Backups on steroids.</li>
+            <li>Multiple people working on the same files</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Version Control - Git</h2>
+            <ul>
+              <li>Several flavors: Subversion, CVS, Mercurial, etc</li>
+              <li>Cool kids use Git</li>
+              <li>Github is great</li>
+            </ul>
+        </section>
+
+        <section>
+          
+            <h2>Git started -  Install</h2>
+          
+              <ol>
+                <li>Installing Git requires some command line usage.</li>
+                <li>Great instructions on github: <a href="https://help.github.com/articles/set-up-git">https://help.github.com/articles/set-up-git</a></li>
+              </ol>
+
+          </section>
+          
+          <section>
+            <h2>Git Basics -  Repo</h2>
+            <ul>
+              <li>A repository or "repo", is the directory that Git watches for any changes</li>
+              <li>You can have them locally on your computer, and remotely on hosts like github and bitbucket.</li>
+              <li>Connect local & remote repos for fun and profit.</li>
+              <li>Private vs public repos</li>
+            </ul>
+
+          </section>
+          
+          <section>
+            <h2>Tower - GUI app for Git</h2>
+            <p>Manage repos visually, instead of through the command line</p>
+          </section>
+          
+          <section>
+            <h2>Git Basics -  Commit</h2>
+            <ul>
+              <li>A "commit" is a snapshot of file changes</li>
+              <li>Creates a detailed log of all file changes</li>
+              <li>You can choose which files to include in each commit</li>
+            </ul>
+
+          </section>
+          <section>
+            <h2>Links</h2>
+            <ul>
+              <li><a href="http://github.com">http://github.com</a> Free public repo hosting</li>
+              <li><a href="http://bitbucket.org">http://bitbucket.org</a> Free public & private repo hosting</li>
+              <li><a href="http://git-scm.com/documentation">http://git-scm.com/documentation</a> Git documentation</li>
+            </ul>
+
+          </section>
+         
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+          // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>

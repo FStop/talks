@@ -1,4 +1,16 @@
-
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+/**
+ * Default theme for reveal.js.
+ * 
+ * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+@font-face {
+  font-family: 'League Gothic';
+  src: url("../../lib/font/league_gothic-webfont.eot");
+  src: url("../../lib/font/league_gothic-webfont.eot?#iefix") format("embedded-opentype"), url("../../lib/font/league_gothic-webfont.woff") format("woff"), url("../../lib/font/league_gothic-webfont.ttf") format("truetype"), url("../../lib/font/league_gothic-webfont.svg#LeagueGothicRegular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
 
 /*********************************************
  * GLOBAL STYLES
@@ -15,7 +27,7 @@ body {
 }
 
 .reveal {
-  font-family: "Avenir Next W01 Thin", sans-serif;
+  font-family: "Lato", Times, "Times New Roman", serif;
   font-size: 36px;
   font-weight: 200;
   letter-spacing: -0.02em;
@@ -39,7 +51,7 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #eeeeee;
-  font-family: "Felbridge W01 Bold", sans-serif;
+  font-family: "League Gothic", Impact, sans-serif;
   line-height: 0.9em;
   letter-spacing: 0.02em;
   text-transform: uppercase;
