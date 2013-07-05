@@ -12,9 +12,28 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <script>
+    Reveal.initialize({
 
+    ...
+
+    // The "normal" size of the presentation, aspect ratio will be preserved
+    // when the presentation is scaled to fit different resolutions. Can be
+    // specified using percentage units.
+    width: 1140,
+    height: 800,
+
+    // Factor of the display size that should remain empty around the content
+    margin: 0.1,
+
+    // Bounds for smallest/largest possible scale to apply to content
+    minScale: 0.2,
+    maxScale: 1.0
+
+});
+    </script>
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
 
@@ -79,7 +98,7 @@
     height: 100%;
     background: lightblue;
   }
-  @media all and (max-width: 600px){
+  @media all and (min-width: 600px){
     body{
       background: lightgreen;
     }
@@ -97,7 +116,7 @@
               <h3></h3>
               <h4>Performance</h4>
               <ul>
-                <li>Images make up most of the file size of the average web page</li>
+                <li>Images make up most of the file size of the average web page.</li>
                 <li>small screen devices are more likley have slower connections.</li>
                 <li>larger images = larger file size = slower to load</li>
                 <li>why load an image that is 2-3x as wide as the device's screen?</li>
@@ -132,16 +151,16 @@
           </section>
           <section>
             <h3>...<em>only for CSS background images</em></h3>
-            <h4>The source of inlie images (using the <code>&lt;img&gt;</code> tag) cannot be targeted with media queries!</h4>
+            <p>The source of inline images (using the <code>&lt;img&gt;</code> tag) cannot be targeted with media queries!</p>
             
           </section>
 
           <section>
             <h2>So, how do we do it?</h2>
             <ul>
-              <li>There is currently no standard way</li>
-              <li>W3C is working on a standard</li>
-              <li>In the meantime, smart people have come up with a solution</li>
+              <li>There is currently no standard way.</li>
+              <li>W3C is working on a standard...but it could take <em>years!</em></li>
+              <li>In the meantime, smart people have come up with a solution.</li>
             </ul>
             
           </section>
@@ -154,6 +173,7 @@
               <li>A javascript library for responsive inline images today</li>
               <li>cerated by Scott Jehl of Filament Group</li>
               <li>using javascript magic, it serves different <code>&lt;img&gt;</code> sources based on screen width</li>
+              <li><a href="https://github.com/scottjehl/picturefill">github.com/scottjehl/picturefill</a></li>
             </ul>
           </section>
           
@@ -195,35 +215,67 @@
                 <h3>Step 2: Set thumbnail sizes</h3>
                 <p>In theme's functions.php file:</p>
                 <pre><code>
-  add_image_size( 'thumb-800', 800, 800, false );
-  add_image_size( 'thumb-640', 640, 640, false );
-  add_image_size( 'thumb-480', 480, 480, false );
-  add_image_size( 'thumb-300', 300, 300, false );
+&lt;?php 
+
+/**
+* Add image sizes in theme's functions.php or appropriate place 
+*
+*/
+  add_image_size( 'thumb-300x300-f', 300, 300, false );
+  add_image_size( 'thumb-480x480-f', 480, 480, false );
+  add_image_size( 'thumb-640x640-f', 640, 640, false );
+  add_image_size( 'thumb-800x800-f', 800, 800, false );
+
+?&gt;
                 </code></pre>
               </section>
               
               <section>
-                <h3>Step 3: call different image sizes within picturefill.js markup</h3>
+                <h3>Step 3: set variables for different featured image sizes</h3>
                 <p>On the page:</p>
                 <pre><code>
-&lt;?php $300 = wp_get_attachment_image_src( get_post_thumbnail_id( $post-&gt;ID ), 'thumb-300' ); ?&gt;
-&lt;?php $480 = wp_get_attachment_image_src( get_post_thumbnail_id( $post-&gt;ID ), 'thumb-480' ); ?&gt;
-&lt;?php $640 = wp_get_attachment_image_src( get_post_thumbnail_id( $post-&gt;ID ), 'thumb-640' ); ?&gt;
-&lt;?php $800 = wp_get_attachment_image_src( get_post_thumbnail_id( $post-&gt;ID ), 'thumb-800' ); ?&gt;
-&lt;?php $full = wp_get_attachment_image_src( get_post_thumbnail_id( $post-&gt;ID ), 'full' ); ?&gt;
+&lt;?php
 
-&lt;div data-picture data-alt="Picturefill!"&gt;
-&lt;div data-src="&lt;?php echo $300[0]; ?&gt;"&gt;&lt;/div&gt;
-&lt;div data-src="&lt;?php echo $480[0]; ?&gt;" data-media="(min-width: 400px)"&gt;&lt;/div&gt;
-&lt;div data-src="&lt;?php echo $640[0]; ?&gt;" data-media="(min-width: 600px)"&gt;&lt;/div&gt;
-&lt;div data-src="&lt;?php echo $800[0]; ?&gt;" data-media="(min-width: 800px)"&gt;&lt;/div&gt;
-&lt;div data-src="&lt;?php echo $full[0]; ?&gt;" data-media="(min-width: 1000px)"&gt;&lt;/div&gt;
+/**
+*
+* Set variables for the different sizes of the post featured image
+* ( this goes on the page with the picturefill code where the images will be shown )
+*
+*/
 
-&lt;!-- Fallback content for non-JS browsers. Same img src as the initial, unqualified source element. --&gt;
-&lt;noscript&gt;
-&lt;img src="&lt;?php echo $640[0]; ?&gt;" alt="Picturefill!"&gt;
-&lt;/noscript&gt;
-&lt;/div&gt
+  $thumb_300 = wp_get_attachment_image_src(get_post_thumbnail_id($post-&gt;ID), 'thumb-300x300-f' );
+  $thumb_480 = wp_get_attachment_image_src(get_post_thumbnail_id($post-&gt;ID), 'thumb-480x480-f' );
+  $thumb_640 = wp_get_attachment_image_src(get_post_thumbnail_id($post-&gt;ID), 'thumb-640x640-f' );
+  $thumb_800 = wp_get_attachment_image_src(get_post_thumbnail_id($post-&gt;ID), 'thumb-800x800-f' );
+  $full = wp_get_attachment_image_src(get_post_thumbnail_id($post-&gt;ID), 'full' ); 
+
+?&gt;
+                </code></pre>
+              </section>
+              <section>
+                <h3>Step 3: Picturefille code using the variables as image source values</h3>
+                <p>On the page:</p>
+                <pre><code>
+&lt;!-- 
+* Picturefill Code
+*
+* Echo fetured image size variables for the Picturefill image source values.
+* wp_get_attachment_image_src() returns an array, so [0] after the variable will get the image urls.
+*
+--&gt;
+
+&lt;div data-picture data-alt=&quot;Picturefill!&quot;&gt;
+    &lt;div data-src=&quot;&lt;?php echo $thumb_300[0]; ?&gt;&quot;&gt;&lt;/div&gt;
+    &lt;div data-src=&quot;&lt;?php echo $thumb_480[0]; ?&gt;&quot; data-media=&quot;(min-width: 400px)&quot;&gt;&lt;/div&gt;
+    &lt;div data-src=&quot;&lt;?php echo $thumb_640[0]; ?&gt;&quot; data-media=&quot;(min-width: 600px)&quot;&gt;&lt;/div&gt;
+    &lt;div data-src=&quot;&lt;?php echo $thumb_800[0]; ?&gt;&quot; data-media=&quot;(min-width: 800px)&quot;&gt;&lt;/div&gt;
+    &lt;div data-src=&quot;&lt;?php echo $full[0]; ?&gt;&quot; data-media=&quot;(min-width: 1000px)&quot;&gt;&lt;/div&gt;
+
+    &lt;!-- Fallback content for non-JS browsers. --&gt;
+    &lt;noscript&gt;
+        &lt;img src=&quot;&lt;?php echo $thumb_640[0]; ?&gt;&quot; alt=&quot;Picturefill!&quot;&gt;
+    &lt;/noscript&gt;
+&lt;/div&gt;
                 </code></pre>
               </section>
              
