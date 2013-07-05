@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
 
-    <title>Responsive Images with WordPress & picturefill.js</title>
+    <title>F-Stop Design Talks: Responsive Images with WordPress & picturefill.js</title>
 
     <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
     <meta name="author" content="Gabriel Luethje">
@@ -14,26 +14,7 @@
 
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/default.css" id="theme">
-    <script>
-    Reveal.initialize({
 
-    ...
-
-    // The "normal" size of the presentation, aspect ratio will be preserved
-    // when the presentation is scaled to fit different resolutions. Can be
-    // specified using percentage units.
-    width: 1140,
-    height: 800,
-
-    // Factor of the display size that should remain empty around the content
-    margin: 0.1,
-
-    // Bounds for smallest/largest possible scale to apply to content
-    minScale: 0.2,
-    maxScale: 1.0
-
-});
-    </script>
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
 
@@ -41,17 +22,26 @@
     <script>
       document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
     </script>
+
     <style>
-      section p{
-        text-align: left;
-        margin-bottom: 1em;
-      }
-      ::selection {
-        color: white;
-        background: lightblue;
-        text-shadow: none;
-      }
-    </style>
+        section p{
+          text-align: left;
+          margin-bottom: 1em;
+        }
+        ::selection {
+          color: white;
+          background: lightblue;
+          text-shadow: none;
+        }
+        .attr, .attr:visited{
+          position: absolute;
+          bottom: 10px;
+          left: 20px;
+          font-size: 14px !important;
+          color: #777 !important;
+          text-decoration: none;
+        }
+      </style>
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
@@ -60,7 +50,7 @@
   <body>
 
     <div class="reveal">
-
+      <a class="attr" href="http://fstopdesign.com">F-Stop Web Design</a>
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
 

@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>F-Stop Talks: Intro to WooCommerce</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -22,7 +22,25 @@
 		<script>
 			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 		</script>
-
+		<style>
+	      section p{
+	        text-align: left;
+	        margin-bottom: 1em;
+	      }
+	      ::selection {
+	        color: white;
+	        background: lightblue;
+	        text-shadow: none;
+	      }
+	      .attr, .attr:visited{
+	        position: absolute;
+	        bottom: 10px;
+	        left: 20px;
+	        font-size: 14px !important;
+	        color: #777 !important;
+	        text-decoration: none;
+	      }
+      	</style>
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -31,7 +49,7 @@
 	<body>
 
 		<div class="reveal">
-
+			<a class="attr" href="http://fstopdesign.com">F-Stop Web Design</a>
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 
