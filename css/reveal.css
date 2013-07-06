@@ -1278,4 +1278,24 @@ body {
 	visibility: hidden;
 }
 
-
+/*********************************************
+OVERRIDES
+*********************************************/
+section p{
+  text-align: left;
+  margin-bottom: 1em;
+}
+::selection {
+  color: white;
+  background: lightblue;
+  text-shadow: none;
+}
+.attr, .attr:visited{
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  font-size: 14px !important;
+  color: #777 !important;
+  text-decoration: none;
+  z-index: 1000 !important;
+}
