@@ -10,6 +10,9 @@
 	add_image_size( 'thumb-480x480-f', 480, 480, false );
 	add_image_size( 'thumb-640x640-f', 640, 640, false );
 	add_image_size( 'thumb-800x800-f', 800, 800, false );
+?>
+
+<?php
 
 /**
 *

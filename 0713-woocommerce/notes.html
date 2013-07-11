@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Untitled</title>
+    </head>
+    <body>
+
+<h1>WooCommerce Talk Notes</h1>
+
+<h2>Intro</h2>
+
+<p>Gabe, F-Stop Design, twitter, etc. I primarily do WordPress development, using WordPress to build websites for my clients. I do custom theming, which for me means I take a blank starter theme like Underscores or Bones, plug my own design into it, and customize it, both on the front end and in the admin area, to suit the project . </p>
+
+<p>I'm going to talk about WooCommerce, which is a fully featured e-commerce plugin for WordPress that allows you to quickly get up and running with an online shop.</p>
+
+<p>I'm in the final stages of an e-commerce project built on WooCommerce. The website I'm building is based a custom WordPress theme (of course), and I've had to get pretty deep into the inner workings of WooCommerce to get things looking and working the way the client and I need them to, so I thought I'd share some of my experiences.</p>
+
+<h2>Overview</h2>
+
+<p>WooCommerce a <a href="link to github repo">free, open source plugin</a> with <a href="link to add ons page">premium add ons</a>. So that's how they make their money. We as WordPress users are used to a lot  of nice tools being free, but good things do tend to cost money, especially with something as complex as e-commerce.</p>
+
+<p>The fact that you can get the fully functioning plugin for free get everything set up, see how it works with your theme etc is a great argument for the free plugin/premium add ons model.</p>
+
+<p>The interface and features are well thought out.</p>
+
+<h2>Key Features</h2>
+
+<ul>
+<li>Easy setup*
+<ul><li>asterix: very easy if your theme has WooCommerce support, a bit more complicated if it doesn't. I'll get to that in a minute, but for now let's take a look at some key features</li>
+<li>demo admin area</li>
+<li>show pages auto created</li></ul></li>
+<li>Everything is there for adding &amp; managing products
+<ul><li>demo add product</li>
+<li>Simple vs Variable
+<ul><li>demo creating variations</li>
+<li>demo complex variations</li></ul></li>
+<li>Images
+<ul><li>featured</li>
+<li>gallery</li></ul></li>
+<li>checkout</li>
+<li>widgets</li></ul></li>
+<li>*Adding theme support
+<ul><li>if your theme does not have WooCommerce support, you will need to add some code to the theme's functions.php file, or wherever you prefer to have your includes.</li>
+<li>WooCommerce walks you through what's needed.</li>
+<li>basically you're just telling WooCommerce where the content area of your theme is in the markup, so it knows how to fit into your theme</li>
+<li>Echo html structure of theme's page.php</li></ul></li>
+<li>Supports Twentytwelve</li>
+<li><p>WooThemes</p>
+
+<h2>Customization</h2></li>
+<li><p>As soon as you want to do something that is not in the default setup, things get more complicated</p></li>
+<li>Most templates can be overridden buy copying files from ~/wp-content/plugins/woo-commerce/templates/ to /wp-content/themes/your-theme/woocommerce/
+<ul><li>example...</li></ul></li>
+<li>Not all things can be changed by overriding templates, because they are built with "hooks" within the plugin core. But even these can be tweaked.
+<ul><li>Find the action that activates the feature that you want to edit</li>
+<li>use <code>remove-action()</code> to "unhook" the default woocommerce action</li>
+<li>use <code>add-action()</code> to "rehook" an action of your own.</li>
+<li>example..
+<ul><li>Use code search tool to find the action I needed to customize within the plugin</li>
+<li>copy the action code into my theme include file</li>
+<li>unhook the WooCommerce action with <code>remove-action</code></li>
+<li>hook mine up with <code>add-action</code></li>
+<li>edit my copy to do what I want it to do
+<h2>Final Thoughts</h2></li></ul></li></ul></li>
+</ul>
+	
+    </body>
+</html>

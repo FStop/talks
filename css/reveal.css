@@ -209,7 +209,6 @@ body {
 .reveal ol,
 .reveal ul {
 	display: inline-block;
-
 	text-align: left;
 	margin: 0 0 0 1em;
 }
@@ -220,6 +219,18 @@ body {
 
 .reveal ul {
 	list-style-type: disc;
+}
+.reveal ul.me{
+	display: block;
+	text-align: center;
+	list-style-type: none;
+	margin: 0 0 20px 0;
+}
+.reveal ul.me li{
+	display: inline-block;
+	padding: 5px 0;
+
+
 }
 
 .reveal ul ul {
@@ -534,7 +545,6 @@ body {
 	width: 80%;
 	left: 50%;
 	top: 50%;
-	
 	overflow: visible;
 	z-index: 1;
 	text-align: center;

@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="../css/theme/default.css" id="theme">
 
     <!-- For syntax highlighting -->
-    <link rel="stylesheet" href="../lib/css/zenburn.css">
-
+    <link rel="stylesheet" href="../lib/css/prism.css">
+    <script src="../plugin/highlight/prism.js"></script>
     <!-- If the query includes 'print-pdf', use the PDF print sheet -->
     <script>
       document.write( '<link rel="stylesheet" href="../css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
@@ -37,18 +37,12 @@
 
         <section>
           
-          <h1>
-            CSS Preprocessors <br />& WordPress Themes:
-          </h1>
-          <h3>
-            How Sass and Compass can make your CSS more efficient, and how they can work with WordPress theme development.
-          </h3>
+          <h1>CSS Preprocessors & WordPress Themes:</h1>
+          <h3>How Sass and Compass can make your CSS more efficient, and how they can work with WordPress theme development.</h3>
 
         </section>
         <section>
-          <h1 class="normalh1">
-          What is a preprocessor?
-          </h1>
+          <h1>What is a preprocessor?</h1>
           <p>
             <strong>pre·proc·es·sor</strong> /prēˈpräsˌesər/
           </p>
@@ -59,31 +53,185 @@
         </section>
         <section>
         
-          <h1>CSS Preprocessors
-          </h1>
-          <ul class="build">
-            <li>LESS</li>
-            <li>Sass</li>
-            <li>Stylus</li>
-            <li>Sass FTW!</li>
-          </ul>
+          <h1>CSS Preprocessors</h1>
+            <ul>
+              <li>LESS</li>
+              <li>Stylus</li>
+              <li>Sass FTW!</li>
+            </ul>
 
         </section>
         <section>
           <h1>Sass</h1>
-        <ul class="build">
-          <li>Two formats: .sass & .scss</li>
-          <li>.scss is newer & easier to use</li>
-          <li>.scss accepts standard CSS</li>
-          <li>you can change normal .css files to .scss</li>
-        </ul>
-
-          <section>
-            <h1>Remove/Add Actions</h1>
-          </section>
+            <ul class="build">
+              <li>Two formats: .sass & .scss</li>
+              <li>.scss is newer & easier to use</li>
+              <li>.scss accepts standard CSS</li>
+              <li>you can change normal .css files to .scss</li>
+            </ul>
           
         </section>
+        <section>
+          <h1>Why bother?</h1>
+          <h3>Reason #1: nesting</h3>
+          <p> Normal CSS</p>
+          <pre><code class="language-css">
+  .container{
+    width: 50%
+  }
+  .container h1{
+    margin: 1em;
+  }
+  .container h1 a{
+    text-decoration: none;
+    color: #000;
+  }
+  .container h1 a:hover{
+    text-decoration: underline;
+    color: #660000;
+  }
+          </code></pre>             
+   
+        </section>
+        <section>
+          <h1>Sass nesting</h1>
+          <p>Sass (.scss syntax)</p>
+          <pre><code class="language-scss">
+  .container{
+    width: 50%
+    h1{
+      margin: 1em;
+      a{
+        text-decoration: none;
+        color: #000;
+        &:hover{
+          text-decoration: underline;
+          color: #660000;
+        }
+      }
+    }
+  }
+          </code></pre>
+        </section>
+        <section>
+          <h1>Reason #2: variables</h1>
+          <p> Normal CSS</p>
+          <pre><code class="language-css">
+  .container{
+    background: #990000;
+    color: #ddd
+  }
+  .box{
+    background: #990000;
+    color: #ddd;
+  }
+  .widget{
+    background: #990000;
+    color: #ddd;
+  }
+          </code></pre>
+        </section>
+        <section>
+           <h1>Reason #2: variables</h1>
+            <p>.scss</p>
+            <pre><code class="language-scss">
+  $red: #990000;
+  $gray: #ddd;
+  
+  .container{
+    background: $red;
+    color: $gray;
+  }
+  .box{
+    background: $red;
+    color: $gray;
+  }
+            </code></pre>
+        </section>
+        <section>
+          <h1>Reason #3: mixins</h1>
+          <p> Normal CSS</p>
+            <pre><code class="language-css">
+  .container{
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+  }
+            </code></pre>
+        </section>
+        <section>
+          <h1>Reason #3: mixins</h1>
+            <p>.scss</p>
+            <pre><code class="language-scss">
+  .container{
+    @include border-radius(5px);
+  }
+            </code></pre>
+            <p>Requires a mixin:</p>
+            <pre><code class="language-scss">
+  @mixin border-radius($radius){
+      -webkit-border-radius: $radius;
+      -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+      -o-border-radius: $radius;
+      border-radius: $radius;
+}
+            </code></pre>
+        </section>
+        <section>
+          <h1>Reason #4: Compass</h1>
+          <p>.scss</p>
+          <pre><code class="language-scss">
+@import "compass";
 
+.container{
+    @include border-radius(5px);
+}
+          </code></pre>
+          <p>Compass is a huge library of common mixins.</p>
+          <p>Never worry about vendor prefixes again.</p>
+          <p>Cross broswer CSS for things like inline-block.</p>
+          <p>Automatically replace text with an image.</p>
+          <p>Automatically generate sprites and relevant CSS.</p>
+        </section>
+        <section>
+          <h3>Reason #4: separate code for humans and machines</h3>
+          <p>You can break up stylesheets into modules that make sense, and compile them together into one stylesheet.</p>
+          <p>CSS (.scss) becomes more readable and usable for you</p>
+          <p>the CSS that is generated can be optimized for the machine.</p>
+          <p>Single stylesheet reduces HTTP requests</p>
+          <p>Outputted CSS can be minified and compressed, while .scss files remain readable</p>
+        </section>
+        <section>
+          <h1>The Catches:</h1>
+          <ul>
+            <li>Preprocessors require a compiler.</li>
+            <li>Terminal in Mac OS X</li>
+            <li>Codekit: http://incident57.com/codekit/</li>
+          </ul>
+        </section>
+        <section>
+          <h1>WordPress?</h1>
+          <ul>
+            <li>WordPress themes require a style.css file in root of theme directory</li>
+            <li>Requires specific information in a commented section at the top</li>
+            <li>Preprocessors can interfere with CSS comments</li>
+            <li>Use the default style.css file only for the required comment block, and include separate compiled stylesheet(s).</li> 
+          </ul>
+        </section>
+        <section>
+          <h1>Links</h1>
+          <ul>
+            <li>Sass: http://sass-lang.com, http://thesassway.com</li>
+            <li>Compass: http://compass-style.org/</li>
+            <li>Codekit: http://inciodent57.com/codekit</li>
+            <li>Bones WordPress Theme: http://themble.com/bones</li>
+            <li>LESS: http://lesscss.org</li>
+            <li>Stylus: http://learnboost.github.com/stylus/</li>
+          </ul>
+        </section>
       </div>
 
     </div>
@@ -109,8 +257,7 @@
             { src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
             { src: '../plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
             { src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-            { src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-            { src: '../plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+              { src: '../plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
             { src: '../plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
             // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
           ]
